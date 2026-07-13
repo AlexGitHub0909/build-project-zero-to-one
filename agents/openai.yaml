@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build Project Zero to One"
+  short_description: "Turn product documents into a verified, maintainable project"
+  default_prompt: "Use $build-project-zero-to-one to turn this product brief or existing repository into a planned, traceable, and verified project."
