@@ -1,10 +1,21 @@
-# From product definition to verified delivery
+<p align="center"><samp>PRODUCT DEFINITION → PLAN → IMPLEMENTATION → EVIDENCE → HANDOFF</samp></p>
 
-[简体中文](README.md)
+<h1 align="center">From product definition to verified delivery</h1>
 
-This Codex skill keeps product intent, implementation state, and verification evidence in the repository. It can establish a new project or audit and continue an existing codebase.
+<p align="center">A Codex Skill that keeps product intent, execution plans, engineering rules, and verification evidence in one repository.</p>
 
-Every managed project needs a current `PLAN.md` and a root `AGENTS.md`. Add scoped `AGENTS.md` files where local engineering rules differ. Keep approved intent separate from implementation evidence so a written requirement does not pass as finished code.
+<p align="center">
+  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-2f855a.svg?style=flat-square"></a>
+  <img alt="Codex Skill" src="https://img.shields.io/badge/Codex-Skill-2563eb.svg?style=flat-square">
+  <img alt="Workflow: PLAN and AGENTS" src="https://img.shields.io/badge/workflow-PLAN%20%2B%20AGENTS-7c3aed.svg?style=flat-square">
+  <img alt="Python standard library only" src="https://img.shields.io/badge/Python-stdlib%20only-3776ab.svg?style=flat-square&amp;logo=python&amp;logoColor=white">
+</p>
+
+<p align="center">
+  <a href="README.md">🇨🇳 中文</a> · <a href="README.en.md">🇺🇸 English</a>
+</p>
+
+The skill can establish a new project or audit an existing codebase before implementation continues. `PLAN.md` records the current execution state. The root `AGENTS.md` and any necessary scoped files define engineering rules. Approved intent stays separate from implementation evidence, so a written requirement does not pass as finished code.
 
 ## Installation
 
@@ -60,23 +71,13 @@ Some installed versions and built-in tools still use `$CODEX_HOME/skills`, usual
 
 The repository is self-contained. It does not require an MCP server or a separate plugin.
 
-## When to use it
+## Choose a working mode
 
-Use `$build-project-zero-to-one` when you want Codex to:
-
-- start a software project from a PRD, brief, or set of requirements;
-- recover the state of an existing repository and continue the work;
-- produce an implementation-ready spec and handoff without writing application code;
-- add or repair project planning, document routing, traceability, test evidence, and release rules;
-- implement the next verifiable slice and update the repository facts as it goes.
-
-The skill supports three modes:
-
-| Mode | Use it for |
-|---|---|
-| `GREENFIELD` | A new project with product material but little or no code |
-| `BROWNFIELD` | An existing repository that must be audited before changes |
-| `SPEC_ONLY` | A specification and handoff package with no application-code changes |
+| Your situation | Mode | What the skill does first |
+|---|---|---|
+| You have a PRD or requirements but little or no code | `GREENFIELD` | Establish the plan, scoped rules, specifications, and traceability before completing the first verifiable slice |
+| Code and project documents already exist | `BROWNFIELD` | Audit Git, plans, documents, code, and tests before acting on confirmed gaps |
+| You only need specifications and handoff material | `SPEC_ONLY` | Produce contracts, implementation slices, and acceptance evidence without changing application code |
 
 ## Project governance
 

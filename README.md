@@ -1,10 +1,21 @@
-# 从产品定义到可验证交付
+<p align="center"><samp>PRODUCT DEFINITION → PLAN → IMPLEMENTATION → EVIDENCE → HANDOFF</samp></p>
 
-[English](README.en.md)
+<h1 align="center">从产品定义到可验证交付</h1>
 
-这个 Codex Skill 把产品定义、实施状态和验证证据维护在同一个仓库里。它既能建立新项目，也能审计并继续已有代码库。
+<p align="center">把产品定义、执行计划、工程规则和验证证据维护在同一个仓库里的 Codex Skill。</p>
 
-项目必须维护当前 `PLAN.md`，根目录必须有 `AGENTS.md`，存在独立工程边界的子目录也要有自己的 `AGENTS.md`。产品目标和当前实现分开记录，文档里写了某项能力，不代表代码已经完成。
+<p align="center">
+  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-2f855a.svg?style=flat-square"></a>
+  <img alt="Codex Skill" src="https://img.shields.io/badge/Codex-Skill-2563eb.svg?style=flat-square">
+  <img alt="Workflow: PLAN and AGENTS" src="https://img.shields.io/badge/workflow-PLAN%20%2B%20AGENTS-7c3aed.svg?style=flat-square">
+  <img alt="Python standard library only" src="https://img.shields.io/badge/Python-stdlib%20only-3776ab.svg?style=flat-square&amp;logo=python&amp;logoColor=white">
+</p>
+
+<p align="center">
+  <a href="README.md">🇨🇳 中文</a> · <a href="README.en.md">🇺🇸 English</a>
+</p>
+
+这个 Skill 可以建立新项目，也可以先审计已有代码库再继续实施。`PLAN.md` 记录当前执行状态，根 `AGENTS.md` 和必要的子目录 `AGENTS.md` 约束工程行为。产品目标与当前实现分开记录，文档里写了某项能力，不代表代码已经完成。
 
 ## 安装
 
@@ -60,23 +71,13 @@ git commit -m "chore: add project delivery skill"
 
 这个仓库可以独立使用，不依赖 MCP Server，也不需要额外安装 Plugin。
 
-## 适用场景
+## 选择工作模式
 
-使用 `$build-project-zero-to-one` 可以完成这些工作：
-
-- 根据 PRD、产品说明或需求清单创建新项目；
-- 恢复已有仓库的真实状态，找出下一项应该实施的工作；
-- 只输出可交接的规格包，不修改应用代码；
-- 补齐或修正计划、文档路由、需求追溯、测试证据和发布规则；
-- 按可验证的实施切片推进工作，并同步更新仓库中的事实记录。
-
-Skill 支持三种模式：
-
-| 模式 | 适用情况 |
-|---|---|
-| `GREENFIELD` | 新项目，已有产品材料，但代码很少或还没有代码 |
-| `BROWNFIELD` | 已有仓库，必须先审计现状，再决定如何修改 |
-| `SPEC_ONLY` | 只做规格和交接，不改应用代码 |
+| 你的情况 | 模式 | Skill 会先做什么 |
+|---|---|---|
+| 已有 PRD 或需求材料，代码很少或还没有代码 | `GREENFIELD` | 建立计划、分层规则、规格和追溯关系，再完成第一个可验证切片 |
+| 已有代码和项目文档 | `BROWNFIELD` | 审计 Git、计划、文档、代码与测试，确认真实缺口后继续实施 |
+| 只需要规格和交接材料 | `SPEC_ONLY` | 输出契约、实施切片和验收依据，不修改应用代码 |
 
 ## 项目治理内容
 
