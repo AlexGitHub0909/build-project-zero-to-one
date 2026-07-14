@@ -59,7 +59,11 @@ def parse_args() -> argparse.Namespace:
 
 def safe_relative_dir(raw: str) -> Path:
     posix = PurePosixPath(raw.replace("\\", "/"))
-    if posix.is_absolute() or not posix.parts or any(part in {"", ".", ".."} for part in posix.parts):
+    if (
+        posix.is_absolute()
+        or not posix.parts
+        or any(part in {"", ".", ".."} for part in posix.parts)
+    ):
         raise ValueError(f"invalid scoped directory: {raw!r}")
     return Path(*posix.parts)
 
@@ -72,6 +76,18 @@ def render(template_name: str, values: dict[str, str]) -> str:
     for key, value in values.items():
         content = content.replace("{{" + key + "}}", value)
     return content
+
+
+def safe_target(project_root: Path, relative: Path) -> Path:
+    target = project_root / relative
+    resolved_parent = target.parent.resolve()
+    try:
+        resolved_parent.relative_to(project_root)
+    except ValueError as exc:
+        raise ValueError(f"target leaves project directory: {relative.as_posix()}") from exc
+    if target.is_symlink() and not target.exists():
+        raise ValueError(f"target is a broken symbolic link: {relative.as_posix()}")
+    return target
 
 
 def write_missing(target: Path, content: str, dry_run: bool) -> str:
@@ -101,7 +117,8 @@ def main() -> int:
         "PROJECT_NAME": args.name.strip(),
         "MODE": args.mode.upper().replace("-", "_"),
         "DATE": date.today().isoformat(),
-        "SCOPED_RULE_ROWS": scoped_rows or "| No scoped work area yet | Add a row when a scoped `AGENTS.md` is created |",
+        "SCOPED_RULE_ROWS": scoped_rows
+        or "| No scoped work area yet | Add a row when a scoped `AGENTS.md` is created |",
     }
     if not values["PROJECT_NAME"] or any(char in values["PROJECT_NAME"] for char in "\r\n"):
         print("error: --name must be a non-empty single line", file=sys.stderr)
@@ -109,17 +126,26 @@ def main() -> int:
 
     actions: list[tuple[str, Path]] = []
     try:
+        targets: list[tuple[Path, str, dict[str, str]]] = []
         for relative, template_name in CORE_FILES.items():
-            target = project_root / relative
-            result = write_missing(target, render(template_name, values), args.dry_run)
-            actions.append((result, target))
+            targets.append(
+                (safe_target(project_root, Path(relative)), template_name, values)
+            )
 
         for scope in scoped_dirs:
-            target = project_root / scope / "AGENTS.md"
             scope_values = {**values, "SCOPED_PATH": scope.as_posix()}
+            targets.append(
+                (
+                    safe_target(project_root, scope / "AGENTS.md"),
+                    "scoped-AGENTS.md",
+                    scope_values,
+                )
+            )
+
+        for target, template_name, template_values in targets:
             result = write_missing(
                 target,
-                render("scoped-AGENTS.md", scope_values),
+                render(template_name, template_values),
                 args.dry_run,
             )
             actions.append((result, target))

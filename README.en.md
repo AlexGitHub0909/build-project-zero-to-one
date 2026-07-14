@@ -114,7 +114,7 @@ The supplied templates cover:
 - test and release evidence;
 - architecture decisions and rollback.
 
-The default initializer creates the full governance baseline. Use it for a new project, or for an existing repository that has deliberately adopted this layout. Otherwise, adapt individual templates to the repository's canonical files instead of creating a second documentation system.
+The initializer creates a standard governance file skeleton. It does not decide the project's work areas or fill in owners, commands, and acceptance evidence. Use it for a new project, or for an existing repository that has deliberately adopted this layout, then replace the starter content with confirmed project facts. Otherwise, adapt the needed content to the repository's canonical files instead of creating a second documentation system.
 
 ## Use it
 
@@ -160,7 +160,13 @@ Audit the result:
 python3 scripts/audit_project.py /path/to/project
 ```
 
-These scripts check the standard layout supplied by this skill. Do not use missing standard filenames as proof that an older repository lacks equivalent governance. Its own `AGENTS.md`, test standards, and release runbook still decide which stack-specific commands to run.
+Warnings are expected immediately after initialization because the starter content is not a finished handoff. Before handoff, use strict mode; empty work-area routes, untouched starter text, and key empty tables become errors:
+
+```bash
+python3 scripts/audit_project.py /path/to/project --strict
+```
+
+Strict mode catches structural gaps and obvious unfinished starter content. It does not prove that the decisions are correct or the software works. These scripts check the standard layout supplied by this skill. Do not use missing standard filenames as proof that an older repository lacks equivalent governance. Its own `AGENTS.md`, test standards, and release runbook still decide which stack-specific commands to run.
 
 ## Boundaries
 
@@ -179,6 +185,7 @@ spec-to-delivery/
 ├── agents/
 ├── references/        # Core rules and on-demand work-area rules
 ├── scripts/
+├── tests/             # Regression tests for the helper scripts
 └── assets/templates/project/
 ```
 

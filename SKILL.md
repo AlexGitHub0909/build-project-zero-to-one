@@ -140,13 +140,19 @@ Use these readiness levels:
 
 Do not skip levels based on confidence. A build or test result cannot prove deployment. A deployment cannot prove protected user flows that were not exercised.
 
-Before handoff, run this audit when the project uses the supplied standard layout:
+Run the standard-layout audit while establishing the project. Warnings identify starter content that still needs a project-specific decision or command:
 
 ```bash
 python3 scripts/audit_project.py /path/to/project
 ```
 
-Then run the project's own checks from its `AGENTS.md`, test standards, and release runbook. Read the output. Report commands that were not run, partial coverage, manual evidence, and external blockers.
+Before handoff, run it in strict mode. Do not hand off while it reports an empty work-area route, untouched starter text, or another error:
+
+```bash
+python3 scripts/audit_project.py /path/to/project --strict
+```
+
+This audit catches structural gaps and obvious unfinished starter content; a clean result does not prove that the decisions are correct or the software works. Then run the project's own checks from its `AGENTS.md`, test standards, and release runbook. Read the output. Report commands that were not run, partial coverage, manual evidence, and external blockers.
 
 For a brownfield repository that keeps its own layout, map the same responsibilities to the existing files and use its governance checks instead of forcing this audit.
 
