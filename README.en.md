@@ -63,8 +63,11 @@ Each cycle advances one active slice. Finishing a slice does not mean the projec
 ## Core rules
 
 - Keep `PLAN.md` as the current execution record. Update it when the task, result, evidence, blocker, or next step changes.
+- Give the active slice an expected outcome or value signal, an acceptance owner, and a next checkpoint when it affects progress. Do not invent a KPI to fill a template.
+- Track only material risks that can affect the current delivery, with their impact, response, owner, and trigger. Do not create a separate risk register by default.
 - Give every project a root `AGENTS.md`. Add a scoped file when a directory has its own stack, application boundary, data boundary, validation commands, or release process.
 - Keep intended product behavior separate from implementation facts. Contracts define the target; code, Git, tests, and runtime results show the current implementation.
+- When approved scope or approach changes, record the reason and its effect on delivery, cost, or acceptance. Put reusable lessons into the relevant rule, contract, or automated check.
 - Reuse the repository's existing structure, dependencies, components, services, and documents before adding another abstraction or a parallel fact source.
 - Do not deploy, write to external systems, buy services, use real credentials, or make destructive data changes without clear authority.
 

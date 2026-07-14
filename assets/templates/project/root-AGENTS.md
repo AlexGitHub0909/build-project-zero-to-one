@@ -59,10 +59,13 @@ If approved behavior and implementation disagree, record the gap and repair the 
 - Reuse current code, framework features, dependencies, components, services, scripts, and documents before adding a new abstraction.
 - Preserve user-approved and existing choices for implementation and documentation languages, frameworks, data stores, architecture, hosting, and tooling.
 - For an open choice that is expensive to reverse, recommend an option from current constraints and get confirmation before scaffolding unless the user delegates the decision. Record the result in `PLAN.md` or an ADR.
+- Keep the active slice tied to an expected outcome or value signal, an acceptance owner, and a next checkpoint when a date, decision, review, dependency, or release gate matters.
 - Make the smallest change that closes the current behavior without weakening security, validation, transactions, idempotency, errors, accessibility, or evidence.
 - For a defect, collect failing evidence and locate the first divergence before changing code.
-- For a high-risk or cross-system change, record the goal, non-goal, evidence, dependencies, risk, acceptance, rollback, and stop conditions in `PLAN.md` and affected contracts.
+- For a high-risk or cross-system change, record the goal, non-goal, evidence, dependencies, material-risk response and owner, acceptance, rollback, and stop conditions in `PLAN.md` and affected contracts.
+- When approved scope or approach changes, record the reason and its effect on delivery, cost, or acceptance before continuing.
 - Keep product, flow, page, API, data, permission, test, and release documents consistent with the implementation actually verified.
+- When a result changes how later work should be done, update the nearest rule, contract, or automated check instead of starting a separate lessons log by default.
 - Do not expose credentials, secrets, private user or organization data, or production values.
 - Do not deploy, push, perform destructive data changes, or write to external systems without clear authority.
 

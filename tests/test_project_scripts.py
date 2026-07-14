@@ -100,6 +100,18 @@ class ProjectScriptTests(unittest.TestCase):
         self.assertIn("## Capability decisions", plan)
         self.assertIn("## Capability and tool routing", agents)
 
+    def test_initializer_includes_lean_project_controls(self) -> None:
+        plan = (self.project / "PLAN.md").read_text(encoding="utf-8")
+        product_spec = (
+            self.project / "docs/specs/product-spec.md"
+        ).read_text(encoding="utf-8")
+
+        self.assertIn("- Acceptance owner:", plan)
+        self.assertIn("- Next checkpoint:", plan)
+        self.assertIn("### Expected outcome or value signal", plan)
+        self.assertIn("| Risk or uncertainty |", plan)
+        self.assertIn("how the approval owner will recognize value", product_spec)
+
     def test_initializer_rejects_scoped_symlink_escape(self) -> None:
         outside = Path(self.temp_dir.name) / "outside"
         outside.mkdir()

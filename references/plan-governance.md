@@ -11,6 +11,7 @@ Keep these sections near the top:
 - Current status
 - Current task
 - Goal and non-goals
+- Expected outcome or value signal
 - Current evidence
 - Implementation approach
 - Risks and boundaries
@@ -25,6 +26,8 @@ For `GREENFIELD`, a material architecture change, or a change in product respons
 
 Add a capability-decisions table only when a specialized Skill, plugin, connector, external service, or artifact tool affects delivery, permissions, acceptance evidence, or fallback. Record the need, selected capability, whether it is required, current availability and authority, and the fallback or blocker. Do not inventory routine repository commands.
 
+Name the acceptance owner for the active task. Add a next checkpoint only when a date, decision, review, dependency, or release gate changes how the work should proceed. For material risks, record the likely impact, response, owner, and trigger or stop condition inside the current task; do not create a separate risk register by default.
+
 ## Update rules
 
 Update `PLAN.md`:
@@ -33,6 +36,7 @@ Update `PLAN.md`:
 - when the active task changes;
 - when evidence invalidates the planned approach;
 - when implementation changes approved behavior;
+- when approved scope or approach changes, with the reason and effect on delivery, cost, or acceptance;
 - when the user confirms or delegates a material technology or documentation language decision;
 - when a work area becomes applicable, deferred, not applicable, or unresolved;
 - when a required capability, permission, or fallback changes;
@@ -49,6 +53,7 @@ If the plan says A and implementation becomes B, change the plan before calling 
 - Move old detail into a compact recent-completions table or an archive when it obscures current work.
 - Link to contracts and evidence rather than copying them.
 - Do not use the plan as an API contract, design system, test case library, or changelog.
+- When a completed task produces a lesson that changes future work, update the relevant `AGENTS.md`, contract, or automated check instead of keeping a separate lessons log by default.
 
 ## Existing trackers
 

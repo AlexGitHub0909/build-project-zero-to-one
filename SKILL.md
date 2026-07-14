@@ -114,7 +114,7 @@ After classification, replace template instructions with the confirmed work-area
 
 ## Turn product intent into executable work
 
-1. Extract actors or systems, problems, outcomes, scope, non-goals, domain rules, constraints, unknowns, and external dependencies.
+1. Extract actors or systems, problems, desired outcomes, observable value signals, scope, non-goals, domain rules, constraints, unknowns, and external dependencies. Do not invent a KPI when an observable outcome is enough.
 2. Assign stable requirement IDs to material behavior.
 3. Write the relevant behavior, flow, state, data, interface, API, permission, error, and visibility contracts at the depth the project needs.
 4. Map each requirement to its implementation and evidence in the traceability matrix.
@@ -126,14 +126,15 @@ After classification, replace template instructions with the confirmed work-area
 
 For each slice:
 
-1. Confirm the goal, non-goal, evidence, risk, acceptance criteria, and rollback or stop condition in `PLAN.md`.
+1. Confirm the goal, non-goal, expected outcome or value signal, acceptance owner, next checkpoint when one matters, evidence, material risks, acceptance criteria, and rollback or stop condition in `PLAN.md`.
 2. Read the nearest scoped `AGENTS.md` files and routed contracts.
 3. For a defect, collect failing evidence and find the first divergence before editing. Add a regression test or a safe substitute when practical.
 4. Make the smallest implementation that closes the behavior without weakening validation, permissions, transactions, idempotency, errors, accessibility, or evidence.
 5. Review the diff for scope, factual claims, error paths, security, and unrelated changes.
 6. Run fresh checks selected by risk and by the scoped rules.
-7. Update contracts, traceability, `PLAN.md`, and `CHANGELOG.md` to match the result actually verified.
-8. Commit only the task-related files when the user has asked for a commit or the repository rules require one.
+7. Update contracts, traceability, `PLAN.md`, and `CHANGELOG.md` to match the result actually verified. If approved scope or approach changed, record the reason and its effect on delivery, cost, or acceptance.
+8. When a result changes how later work should be done, update the nearest rule, contract, or automated check. Do not create a separate lessons log by default.
+9. Commit only the task-related files when the user has asked for a commit or the repository rules require one.
 
 ## Gate completion by evidence
 

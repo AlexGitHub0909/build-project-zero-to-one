@@ -7,6 +7,8 @@
 - Phase: discovery
 - Readiness: not assessed
 - Active task: establish the verified project baseline
+- Acceptance owner: name the person or role
+- Next checkpoint: date, event, decision, or not required
 - Updated: {{DATE}}
 - Branch and revision: record after checking Git
 
@@ -30,6 +32,10 @@ Keep this section only when a specialized Skill, plugin, connector, external ser
 
 Recover or establish the smallest trustworthy baseline for the project.
 
+### Expected outcome or value signal
+
+Describe the observable user, business, operational, or learning outcome that would make this task worthwhile. Use a measure when one already exists; do not invent a KPI.
+
 ### Non-goals
 
 List work that is explicitly outside the current task.
@@ -44,7 +50,10 @@ Describe the next implementation slice and its dependencies after the evidence r
 
 ### Risks and boundaries
 
-Record security, data, external-write, production, migration, cost, and permission boundaries.
+For each material risk or uncertainty, record the likely impact, response, owner, and the condition that triggers escalation, rollback, or a stop. If none applies to the current slice, state that plainly.
+
+| Risk or uncertainty | Likely impact | Response | Owner | Trigger or stop condition |
+|---|---|---|---|---|
 
 ### Acceptance evidence
 
@@ -69,6 +78,8 @@ State when to revert, stop, or request a decision.
 - Keep ideas here only when they are inside approved product scope.
 
 ## Recent completions
+
+When a completion changes how later work should be done, update the relevant rule, contract, or automated check. Do not keep a separate lessons log unless the project requires one.
 
 | Date | Result | Evidence | Commit |
 |---|---|---|---|

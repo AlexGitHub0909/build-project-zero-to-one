@@ -81,9 +81,16 @@ UNFINISHED_TEXT = {
     "PLAN.md": (
         ("- Readiness: not assessed", "readiness"),
         ("- Branch and revision: record after checking Git", "Git revision"),
+        ("- Acceptance owner: name the person or role", "acceptance owner"),
+        ("- Next checkpoint: date, event, decision, or not required", "next checkpoint"),
         (
             "Recover or establish the smallest trustworthy baseline for the project.",
             "current goal",
+        ),
+        (
+            "Describe the observable user, business, operational, or learning outcome "
+            "that would make this task worthwhile.",
+            "expected outcome or value signal",
         ),
         ("List work that is explicitly outside the current task.", "non-goals"),
         (
@@ -97,8 +104,8 @@ UNFINISHED_TEXT = {
             "implementation approach",
         ),
         (
-            "Record security, data, external-write, production, migration, cost, "
-            "and permission boundaries.",
+            "For each material risk or uncertainty, record the likely impact, response, "
+            "owner, and the condition that triggers escalation, rollback, or a stop.",
             "risks and boundaries",
         ),
         (
@@ -115,8 +122,8 @@ UNFINISHED_TEXT = {
     "docs/specs/product-spec.md": (
         ("- Approval owner: name the person or role", "approval owner"),
         (
-            "Describe the actor or system, the problem, and the desired outcome "
-            "without implementation detail.",
+            "Describe the actor or system, the problem, the desired outcome, and how "
+            "the approval owner will recognize value.",
             "product purpose",
         ),
         (

@@ -8,7 +8,7 @@
 
 ## Product purpose
 
-Describe the actor or system, the problem, and the desired outcome without implementation detail.
+Describe the actor or system, the problem, the desired outcome, and how the approval owner will recognize value. Use an observable signal when useful; do not invent a KPI or implementation detail.
 
 ## Actors and roles
 
