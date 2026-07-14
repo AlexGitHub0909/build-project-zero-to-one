@@ -32,6 +32,7 @@ The root file should cover:
 - product purpose and current stage;
 - hard domain and capability boundaries;
 - current technology facts;
+- approved technology and documentation language choices, plus the owner of any open decision;
 - fact sources and document routing;
 - minimal implementation and reuse rules;
 - defect and change-control workflow;

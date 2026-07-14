@@ -10,7 +10,7 @@
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-2f855a.svg?style=flat-square"></a>
   <img alt="Codex Skill" src="https://img.shields.io/badge/Codex-Skill-2563eb.svg?style=flat-square">
   <img alt="Workflow: PLAN and AGENTS" src="https://img.shields.io/badge/workflow-PLAN%20%2B%20AGENTS-7c3aed.svg?style=flat-square">
-  <img alt="Python standard library only" src="https://img.shields.io/badge/Python-stdlib%20only-3776ab.svg?style=flat-square&amp;logo=python&amp;logoColor=white">
+  <img alt="Helper scripts: Python standard library only" src="https://img.shields.io/badge/helpers-Python%20stdlib-3776ab.svg?style=flat-square&amp;logo=python&amp;logoColor=white">
 </p>
 
 <p align="center">
@@ -18,6 +18,8 @@
 </p>
 
 这个 Skill 可以建立新项目，也可以先审计已有代码库再继续实施。`PLAN.md` 记录当前执行状态，根 `AGENTS.md` 和必要的子目录 `AGENTS.md` 约束工程行为。产品目标与当前实现分开记录，文档里写了某项能力，不代表代码已经完成。
+
+Skill 不限定项目的编程语言、框架、数据库、部署平台或文档语言。新项目尚未确定技术方案时，它会根据产品与交付约束推荐一个首选方案，并在确有取舍时给出一个备选。难以回退的选择由用户确认，除非用户明确授权代为决定。仓库里的 Python 只用于辅助脚本。
 
 ## 安装
 
@@ -123,10 +125,10 @@ git commit -m "chore: add project delivery skill"
 ```bash
 python3 scripts/init_project.py /path/to/project \
   --name "项目名称" \
-  --mode greenfield \
-  --scoped backend \
-  --scoped frontend
+  --mode greenfield
 ```
+
+只有目录确实存在独立工程边界时，才按实际路径追加可重复的 `--scoped path/to/directory`，它不是固定的前后端目录结构。
 
 不确定会新增哪些文件时，先预览：
 

@@ -4,6 +4,7 @@
 
 - Modes
 - Gates
+- Technology and language decisions
 - Greenfield path
 - Brownfield path
 - Spec-only path
@@ -34,14 +35,24 @@ Move through gates in order. A later gate may expose a defect in an earlier one;
 | Release | Impact, environment, migration, backup, rollback, health, and post-release evidence are ready |
 | Handoff | A new contributor can recover state from the repository without relying on chat history |
 
+## Technology and language decisions
+
+- Treat user-approved choices and an existing repository's stack as project constraints. Recommend a change only when current evidence shows a material problem, and get approval before acting on it.
+- In a new project, gather the product type, target platforms, team experience, delivery window, budget, deployment environment, integrations, compliance needs, and expected scale before recommending a stack.
+- Recommend one preferred approach and explain why it fits. Include one alternative only when it reveals a material trade-off. Do not present an unranked catalogue of technologies.
+- Get user confirmation before scaffolding around choices that are expensive to reverse, including the implementation language, primary framework or runtime, data store, architecture, hosting model, and identity approach. If the user delegates the decision, choose the simplest suitable option and record the rationale, assumptions, and revisit conditions in `PLAN.md` or an ADR.
+- Use reasonable recorded defaults for low-risk choices that are easy to change. Do not interrupt the user for every formatting tool or directory detail.
+- Keep the repository's established documentation language. For a new project, follow the user's requested language or the supplied product material, and confirm a different team standard when it affects handoff.
+
 ## Greenfield path
 
-1. Read all product source material before choosing a stack.
-2. Record assumptions and unresolved decisions. Ask only questions that materially change scope or architecture.
-3. Prefer framework generators and installed dependencies over custom scaffolding.
-4. Create the governance and documentation files from the supplied templates.
-5. Define the smallest end-to-end slice that proves the architecture.
-6. Implement and verify that slice before widening the backlog.
+1. Read all product source material and collect the constraints needed for technology decisions.
+2. Separate confirmed choices from open decisions. Ask only questions that materially change scope, architecture, cost, operations, or handoff.
+3. Follow the technology decision rules above before scaffolding application code.
+4. Prefer generators from the confirmed framework and installed dependencies over custom scaffolding.
+5. Create the governance and documentation files from the supplied templates, using the project's chosen language.
+6. Define the smallest end-to-end slice that proves the architecture.
+7. Implement and verify that slice before widening the backlog.
 
 ## Brownfield path
 

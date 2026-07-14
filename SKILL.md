@@ -15,6 +15,8 @@ Use this skill to keep approved intent, implementation evidence, and handoff sta
 - Separate approved target behavior from current implementation facts. Product and contract documents describe what should exist. Code, Git, tests, and runtime evidence describe what exists now.
 - Label gaps and boundaries plainly. Never turn `PARTIAL`, `TODO / GAP`, `MANUAL_REQUIRED`, `BLOCKED`, or `FORBIDDEN / OUT_OF_SCOPE` into `IMPLEMENTED` without current evidence.
 - Reuse the repository's existing facts, frameworks, commands, and document structure before adding new ones. Do not create a parallel planning or specification system.
+- Preserve explicit user and repository choices for implementation language, framework, data store, architecture, hosting, tooling, and documentation language. Do not replace them with a preferred stack without approval.
+- For open `GREENFIELD` choices, gather constraints and recommend one preferred option. Add one alternative only when it exposes a material trade-off. Get confirmation before scaffolding around a hard-to-reverse choice unless the user explicitly delegates the decision. Record the choice, rationale, assumptions, and revisit conditions in `PLAN.md` or an ADR. Use recorded defaults only for low-risk, reversible choices.
 - Preserve unrelated user changes. Check Git status before editing and keep commits scoped.
 - Do not deploy, push, buy services, create external accounts, write to remote collaboration systems, use real credentials, or run destructive data changes without clear authority.
 
@@ -67,17 +69,17 @@ Every managed project must have:
 
 Add `CHANGELOG.md` when the project needs a durable capability history. Add `docs/README.md`, `docs/CODEX_DOC_ROUTER.md`, and `docs/DOCS_DICTIONARY.md` when documentation spans several files, audiences, or work areas. Keep the responsibilities covered when a small project combines them.
 
-Use the templates in `assets/templates/project/` only for missing files. Adapt their wording to the project.
+Use the templates in `assets/templates/project/` only for missing files. Adapt their wording and documentation language to the project.
 
 Use the initializer for `GREENFIELD`, or when a `BROWNFIELD` repository has explicitly chosen this standard layout:
 
 ```bash
 python3 scripts/init_project.py /path/to/project \
   --name "Project name" \
-  --mode greenfield \
-  --scoped backend \
-  --scoped frontend
+  --mode greenfield
 ```
+
+Add repeatable `--scoped path/to/directory` arguments only for directories with real local rule boundaries. The Python helpers manage governance files; they do not select or constrain the application's language or stack.
 
 The initializer does not overwrite existing files. Run it with `--dry-run` first. In a brownfield repository with equivalent canonical files, adapt individual templates instead of creating parallel documents.
 

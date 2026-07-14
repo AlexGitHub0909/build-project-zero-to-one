@@ -10,7 +10,7 @@
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-2f855a.svg?style=flat-square"></a>
   <img alt="Codex Skill" src="https://img.shields.io/badge/Codex-Skill-2563eb.svg?style=flat-square">
   <img alt="Workflow: PLAN and AGENTS" src="https://img.shields.io/badge/workflow-PLAN%20%2B%20AGENTS-7c3aed.svg?style=flat-square">
-  <img alt="Python standard library only" src="https://img.shields.io/badge/Python-stdlib%20only-3776ab.svg?style=flat-square&amp;logo=python&amp;logoColor=white">
+  <img alt="Helper scripts: Python standard library only" src="https://img.shields.io/badge/helpers-Python%20stdlib-3776ab.svg?style=flat-square&amp;logo=python&amp;logoColor=white">
 </p>
 
 <p align="center">
@@ -18,6 +18,8 @@
 </p>
 
 The skill can establish a new project or audit an existing codebase before implementation continues. `PLAN.md` records the current execution state. The root `AGENTS.md` and any necessary scoped files define engineering rules. Approved intent stays separate from implementation evidence, so a written requirement does not pass as finished code.
+
+The skill does not prescribe the project's programming language, framework, database, deployment platform, or documentation language. When a new project has no technology decision yet, it recommends one preferred approach from the product and delivery constraints. It adds one alternative only when a material trade-off exists. The user confirms choices that are expensive to reverse unless they explicitly delegate the decision. Python is used only by the helper scripts in this repository.
 
 ## Installation
 
@@ -123,10 +125,10 @@ The initializer copies missing templates and leaves existing files alone:
 ```bash
 python3 scripts/init_project.py /path/to/project \
   --name "Project name" \
-  --mode greenfield \
-  --scoped backend \
-  --scoped frontend
+  --mode greenfield
 ```
+
+Add repeatable `--scoped path/to/directory` arguments only when real directory-level rule boundaries exist. They do not imply a fixed frontend and backend layout.
 
 Preview the changes first:
 

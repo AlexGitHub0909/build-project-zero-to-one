@@ -29,6 +29,7 @@ Update `PLAN.md`:
 - when the active task changes;
 - when evidence invalidates the planned approach;
 - when implementation changes approved behavior;
+- when the user confirms or delegates a material technology or documentation language decision;
 - when a blocker or manual action appears or clears;
 - after verification, with actual commands and results;
 - after completion, with the next concrete task.

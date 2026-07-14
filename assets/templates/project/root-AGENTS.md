@@ -39,6 +39,8 @@ If approved behavior and implementation disagree, record the gap and repair the 
 
 - Check Git status before editing and preserve unrelated user changes.
 - Reuse current code, framework features, dependencies, components, services, scripts, and documents before adding a new abstraction.
+- Preserve user-approved and existing choices for implementation and documentation languages, frameworks, data stores, architecture, hosting, and tooling.
+- For an open choice that is expensive to reverse, recommend an option from current constraints and get confirmation before scaffolding unless the user delegates the decision. Record the result in `PLAN.md` or an ADR.
 - Make the smallest change that closes the current behavior without weakening security, validation, transactions, idempotency, errors, accessibility, or evidence.
 - For a defect, collect failing evidence and locate the first divergence before changing code.
 - For a high-risk or cross-system change, record the goal, non-goal, evidence, dependencies, risk, acceptance, rollback, and stop conditions in `PLAN.md` and affected contracts.
