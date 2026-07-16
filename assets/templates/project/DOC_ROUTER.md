@@ -5,6 +5,7 @@ Read `../AGENTS.md`, `../PLAN.md`, and the nearest scoped `AGENTS.md` for every 
 | Task | Required documents |
 |---|---|
 | Product scope or requirements | `specs/product-spec.md`, `specs/behavior-and-flow-spec.md`, `specs/traceability-matrix.md` |
+| Prototype, interaction, or human product review | `specs/prototype-review.md` when present, product spec, flow spec, interface or API contract, `../PLAN.md` |
 | Public website, content, or discovery | Product spec, page/interface contract, approved content facts, SEO, accessibility, performance, and privacy rules |
 | Interactive frontend behavior | Product spec, flow spec, interface contract, design system, accessibility, and request-state rules |
 | Backend service, job, or integration | Product spec, flow spec, state/data contract, security contract, integration and failure rules |
@@ -14,7 +15,7 @@ Read `../AGENTS.md`, `../PLAN.md`, and the nearest scoped `AGENTS.md` for every 
 | Permissions or sensitive data | Security contract, API/interface contract, state/data ownership rules |
 | Defect investigation | Relevant contract, current tests, test evidence, `../PLAN.md` |
 | Testing or acceptance | `operations/testing-and-acceptance.md`, `operations/test-evidence-matrix.md`, traceability matrix |
-| Release or rollback | `operations/release-runbook.md`, test evidence, affected contracts, `../PLAN.md` |
+| Release or rollback | `operations/release-runbook.md` when present, test evidence, affected contracts, `../PLAN.md`; create the runbook before `RELEASE_READY` |
 | Documentation structure | `README.md`, `DOCS_DICTIONARY.md`, this router, root and docs-scoped rules |
 
 Add project-specific routes when new document responsibilities appear. Remove stale routes when documents move.

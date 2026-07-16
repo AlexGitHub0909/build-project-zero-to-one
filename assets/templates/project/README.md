@@ -29,4 +29,4 @@ Start with `docs/README.md`. Task-to-document routing lives in `docs/DOC_ROUTER.
 
 ## Release
 
-Use `docs/operations/release-runbook.md`. Do not infer production authority from this README.
+Use `docs/operations/release-runbook.md` when release responsibility applies. Add it before claiming `RELEASE_READY`; do not infer production authority from this README.

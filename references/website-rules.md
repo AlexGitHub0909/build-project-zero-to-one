@@ -18,6 +18,7 @@ Confirm from product material or the user:
 
 - Keep public claims tied to approved product facts and current evidence. Do not advertise planned or partial capabilities as available.
 - Define the information architecture, durable URLs, navigation, page purpose, and content owner before polishing isolated sections.
+- When structure, visual hierarchy, messaging, or responsive behavior remains ambiguous, present a sitemap, wireframe, visual screen, or clickable prototype for human review before production implementation.
 - Add titles, descriptions, canonical URLs, social previews, robots rules, sitemaps, and structured data only where discovery requirements call for them. Keep them consistent with visible content.
 - Reuse the project's design system and content patterns. Record responsive behavior, focus order, keyboard access, semantic structure, contrast, and reduced-motion behavior where relevant.
 - Give public forms clear validation, success, retry, error, consent, privacy, retention, and abuse-handling behavior.
@@ -36,5 +37,6 @@ Choose checks that match the site:
 - critical-page loading and media behavior under realistic network conditions;
 - form success, failure, validation, privacy, and abuse paths;
 - target-environment checks for the changed public URLs.
+- comparison of the implemented page with the approved prototype, including recorded intentional differences.
 
 Put concrete framework commands, supported browsers, content sources, performance budgets, and forbidden patterns in the relevant scoped `AGENTS.md`.

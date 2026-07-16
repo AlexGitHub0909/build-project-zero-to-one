@@ -1,4 +1,4 @@
 interface:
   display_name: "SpecToDelivery"
   short_description: "Plan, implement, verify, and hand off software projects"
-  default_prompt: "Use $spec-to-delivery to turn this brief or repository into a planned, traceable project with current verification evidence."
+  default_prompt: "Use $spec-to-delivery to turn this brief or repository into a planned, traceable project. Ask me to approve material decisions or prototypes, then verify each delivered slice with current evidence."

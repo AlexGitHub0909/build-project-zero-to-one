@@ -46,6 +46,13 @@ Cover security, privacy, accessibility, performance, availability, audit, retent
 | Decision | Impact | Owner | Status |
 |---|---|---|---|
 
+## Human review artifacts
+
+Link only the prototypes, mocks, examples, transcripts, diagrams, or dry runs needed to confirm unresolved product intent. Keep their approval status separate from implementation status.
+
+| Decision | Artifact | Reviewer | Status | Evidence |
+|---|---|---|---|---|
+
 ## Acceptance
 
 Link each material requirement to `traceability-matrix.md` and the evidence matrix.

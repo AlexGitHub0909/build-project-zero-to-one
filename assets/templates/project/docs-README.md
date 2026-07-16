@@ -28,3 +28,5 @@ This directory contains the current product, engineering, test, and release cont
 ## Status labels
 
 Use `IMPLEMENTED`, `PARTIAL`, `TODO / GAP`, `MANUAL_REQUIRED`, `BLOCKED`, and `FORBIDDEN / OUT_OF_SCOPE` consistently.
+
+Prototype or confirmation artifacts record human decisions about intended behavior. They do not prove implementation or release.

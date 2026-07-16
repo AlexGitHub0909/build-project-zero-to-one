@@ -16,6 +16,9 @@ CORE_FILES = {
     "README.md": "README.md",
     "AGENTS.md": "root-AGENTS.md",
     "PLAN.md": "PLAN.md",
+}
+
+DELIVERY_FILES = {
     "CHANGELOG.md": "CHANGELOG.md",
     "docs/README.md": "docs-README.md",
     "docs/DOC_ROUTER.md": "DOC_ROUTER.md",
@@ -25,8 +28,15 @@ CORE_FILES = {
     "docs/specs/traceability-matrix.md": "traceability-matrix.md",
     "docs/operations/testing-and-acceptance.md": "testing-and-acceptance.md",
     "docs/operations/test-evidence-matrix.md": "test-evidence-matrix.md",
+}
+
+RELEASE_FILES = {
     "docs/operations/release-runbook.md": "release-runbook.md",
     "docs/architecture/decisions/0000-template.md": "ADR-template.md",
+}
+
+PROTOTYPE_FILES = {
+    "docs/specs/prototype-review.md": "prototype-review.md",
 }
 
 
@@ -41,6 +51,17 @@ def parse_args() -> argparse.Namespace:
         choices=("greenfield", "brownfield", "spec-only"),
         default="greenfield",
         help="Project mode recorded in generated files",
+    )
+    parser.add_argument(
+        "--profile",
+        choices=("core", "delivery", "release"),
+        default="delivery",
+        help="Governance files to create: core, delivery, or release",
+    )
+    parser.add_argument(
+        "--prototype",
+        action="store_true",
+        help="Add a human prototype and review record",
     )
     parser.add_argument(
         "--scoped",
@@ -116,6 +137,7 @@ def main() -> int:
     values = {
         "PROJECT_NAME": args.name.strip(),
         "MODE": args.mode.upper().replace("-", "_"),
+        "PROFILE": args.profile.upper(),
         "DATE": date.today().isoformat(),
         "SCOPED_RULE_ROWS": scoped_rows
         or "| No scoped work area yet | Add a row when a scoped `AGENTS.md` is created |",
@@ -127,7 +149,15 @@ def main() -> int:
     actions: list[tuple[str, Path]] = []
     try:
         targets: list[tuple[Path, str, dict[str, str]]] = []
-        for relative, template_name in CORE_FILES.items():
+        selected_files = dict(CORE_FILES)
+        if args.profile in {"delivery", "release"}:
+            selected_files.update(DELIVERY_FILES)
+        if args.profile == "release":
+            selected_files.update(RELEASE_FILES)
+        if args.prototype:
+            selected_files.update(PROTOTYPE_FILES)
+
+        for relative, template_name in selected_files.items():
             targets.append(
                 (safe_target(project_root, Path(relative)), template_name, values)
             )

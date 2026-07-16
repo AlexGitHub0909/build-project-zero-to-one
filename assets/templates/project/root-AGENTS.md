@@ -15,9 +15,8 @@ Before changing the project, read:
 - `AGENTS.md`;
 - every scoped `AGENTS.md` on the path to the target file;
 - `PLAN.md`;
-- `README.md` and `docs/README.md`;
-- `docs/DOC_ROUTER.md` or the project's equivalent document router;
-- the contracts routed for the task;
+- `README.md`;
+- `docs/README.md`, `docs/DOC_ROUTER.md`, and routed contracts when they exist;
 - current code, tests, Git state, and runtime examples.
 
 ## Work area routing
@@ -53,6 +52,13 @@ If approved behavior and implementation disagree, record the gap and repair the 
 - Do not install, enable, authorize, or write through an external capability without clear user authority.
 - Validate the resulting artifact or system state with the project's own acceptance rules. Tool execution alone is not evidence of correctness.
 
+## Human decisions and prototypes
+
+- Treat the human user or named owner as the authority for product intent, material trade-offs, prototype approval, and acceptance.
+- Produce the smallest useful confirmation artifact before implementation when words leave a material ambiguity. Use visual prototypes only for visual or interactive decisions; use examples, transcripts, diagrams, decision tables, or dry runs for other product surfaces.
+- Record the artifact, reviewer, status, requested changes, and evidence in `PLAN.md` or the routed review document.
+- Do not approve the agent's own proposal or treat silence as approval. Prototype approval confirms target intent, not implementation or release.
+
 ## Rules
 
 - Check Git status before editing and preserve unrelated user changes.
@@ -63,6 +69,7 @@ If approved behavior and implementation disagree, record the gap and repair the 
 - Make the smallest change that closes the current behavior without weakening security, validation, transactions, idempotency, errors, accessibility, or evidence.
 - For a defect, collect failing evidence and locate the first divergence before changing code.
 - For a high-risk or cross-system change, record the goal, non-goal, evidence, dependencies, material-risk response and owner, acceptance, rollback, and stop conditions in `PLAN.md` and affected contracts.
+- Do not cross a required human review gate until it is approved, marked not required, or explicitly waived with the rework risk recorded.
 - When approved scope or approach changes, record the reason and its effect on delivery, cost, or acceptance before continuing.
 - Keep product, flow, page, API, data, permission, test, and release documents consistent with the implementation actually verified.
 - When a result changes how later work should be done, update the nearest rule, contract, or automated check instead of starting a separate lessons log by default.

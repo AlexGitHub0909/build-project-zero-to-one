@@ -65,6 +65,8 @@ product intent
 -> release evidence
 ```
 
+Use evidence IDs such as `EV-AREA-001` when the project maintains a test evidence matrix. Keep the referenced ID synchronized with that matrix; use a direct path or procedure only when a separate evidence row would add no value.
+
 Use `PARTIAL`, `TODO / GAP`, `MANUAL_REQUIRED`, `BLOCKED`, and `FORBIDDEN / OUT_OF_SCOPE` when the chain is incomplete.
 
 ## Implementation slices

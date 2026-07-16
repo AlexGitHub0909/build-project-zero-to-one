@@ -37,6 +37,7 @@ The root file should cover:
 - current technology facts;
 - approved technology and documentation language choices, plus the owner of any open decision;
 - fact sources and document routing;
+- human decision ownership, prototype or confirmation gates, and approval recording;
 - minimal implementation and reuse rules;
 - capability and tool routing, including approval, external effects, and fallback rules;
 - defect and change-control workflow;
@@ -72,5 +73,7 @@ When a rule changes:
 4. update `PLAN.md` and affected contracts;
 5. run rule and documentation checks;
 6. verify that narrower rules still inherit the root boundary.
+
+An agent may recommend and implement, but it must not approve its own material product decision. Route required human reviews through `PLAN.md` or the project's approved decision record.
 
 A rule without a completion condition or check is guidance, not a reliable guardrail.

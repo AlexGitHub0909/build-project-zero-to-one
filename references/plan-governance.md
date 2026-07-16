@@ -15,6 +15,7 @@ Keep these sections near the top:
 - Current evidence
 - Implementation approach
 - Risks and boundaries
+- Human decisions and review gates
 - Acceptance evidence
 - Rollback or stop conditions
 - Now, next, and later work
@@ -28,6 +29,8 @@ Add a capability-decisions table only when a specialized Skill, plugin, connecto
 
 Name the acceptance owner for the active task. Add a next checkpoint only when a date, decision, review, dependency, or release gate changes how the work should proceed. For material risks, record the likely impact, response, owner, and trigger or stop condition inside the current task; do not create a separate risk register by default.
 
+Add a human-review row when a product decision, prototype, mock, transcript, API example, diagram, or dry run must be reviewed before implementation. Record the artifact, whether review is required, reviewer, status, and evidence. Do not treat agent output or user silence as approval.
+
 ## Update rules
 
 Update `PLAN.md`:
@@ -40,6 +43,7 @@ Update `PLAN.md`:
 - when the user confirms or delegates a material technology or documentation language decision;
 - when a work area becomes applicable, deferred, not applicable, or unresolved;
 - when a required capability, permission, or fallback changes;
+- when a human review artifact is requested, approved, rejected, waived, or superseded;
 - when a blocker or manual action appears or clears;
 - after verification, with actual commands and results;
 - after completion, with the next concrete task.

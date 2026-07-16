@@ -29,6 +29,7 @@ Move through gates in order. A later gate may expose a defect in an earlier one;
 | Orientation | Project mode, applicable work areas, expected value, repository state, authority, owners, constraints, and unknowns are recorded |
 | Governance | Root/scoped `AGENTS.md`, `PLAN.md`, document routing, and fact-source order are usable |
 | Specification | Scope, flows, contracts, status labels, and requirement IDs are clear enough to implement |
+| Human review | Required prototypes or confirmation artifacts have an owner and an explicit decision |
 | Planning | Implementation slices have an acceptance owner, dependencies, material-risk responses, evidence, and stop or rollback conditions |
 | Implementation | The current slice is implemented without claiming later work |
 | Verification | Fresh checks support each completion claim; gaps stay visible |
@@ -52,8 +53,9 @@ Move through gates in order. A later gate may expose a defect in an earlier one;
 4. Follow the technology decision rules above before scaffolding application code.
 5. Prefer generators from the confirmed framework and installed dependencies over custom scaffolding.
 6. Create the governance and documentation files from the supplied templates, using the project's chosen language.
-7. Define the smallest end-to-end slice that proves the architecture.
-8. Implement and verify that slice before widening the backlog.
+7. Produce the smallest useful prototype or confirmation artifact when product behavior, workflow, or visual direction still needs human review.
+8. Define the smallest end-to-end slice that proves the architecture.
+9. Implement and verify that slice after required human decisions are recorded.
 
 ## Brownfield path
 

@@ -17,7 +17,7 @@
   <a href="README.md">🇨🇳 中文</a> · <a href="README.en.md">🇺🇸 English</a>
 </p>
 
-SpecToDelivery is a software project delivery Skill built on the open [Agent Skills specification](https://agentskills.io/specification). It can establish a project from product material, recover the current state of an existing repository before implementation continues, or produce an implementation-ready specification without changing code.
+SpecToDelivery is for product owners and developers who work with an AI coding agent. It follows the open [Agent Skills specification](https://agentskills.io/specification). It can establish a project from product material, recover the current state of an existing repository before implementation continues, or produce an implementation-ready specification without changing code.
 
 It is not tied to one agent and does not prescribe a programming language, framework, database, or deployment platform. It keeps existing technical choices when they are settled. When they are open, it recommends one preferred approach from the product and delivery constraints. The user still confirms decisions that are expensive to reverse unless they explicitly delegate that authority to the active agent.
 
@@ -52,10 +52,28 @@ Codex accepts `$spec-to-delivery`. Platforms with a slash-command menu or Skill 
 | Recover facts | Inspect Git, existing rules, plans, documents, code, and tests | Current repository evidence |
 | Confirm scope | Choose the project mode and determine which engineering work areas apply | `PLAN.md` |
 | Establish constraints | Record the active task, directory ownership, validation commands, and prohibited actions | Root and scoped `AGENTS.md` files |
+| Human review | Confirm unresolved product decisions through a prototype, example, or flow | `PLAN.md` and the review artifact |
 | Specify and implement | Split requirements into observable, testable end-to-end slices | Product specs, flow specs, traceability, and code |
 | Verify and hand off | Run current checks and update facts, status, rollback, and the next task | `PLAN.md`, test evidence, and `CHANGELOG.md` |
 
 Each cycle advances one active slice. Finishing a slice does not mean the project is complete, and passing tests does not prove deployment.
+
+## Human and agent responsibilities
+
+SpecToDelivery does not let the agent replace human product acceptance. The user or named owner decides the goal, scope, material trade-offs, prototype direction, and final acceptance. The agent organizes source material, recommends an approach, prepares review artifacts, implements code, runs checks, and records evidence. A decision that changes scope, workflow, visual direction, data ownership, cost, or release risk needs an explicit result; silence is not approval.
+
+### When to prototype first
+
+A prototype is not required for every project. Prepare a confirmation artifact when text leaves a material ambiguity and direct implementation would create avoidable rework:
+
+| Product surface | Suitable confirmation artifact |
+|---|---|
+| Website, web app, mobile app, or desktop interface | Sitemap, user flow, wireframe, visual screen, or clickable prototype |
+| CLI | Command syntax, input and output examples, interaction transcript, and error behavior |
+| API or system integration | Request and response examples, schema mock, webhook fixture, or sequence diagram |
+| Backend workflow, automation, or data product | State diagram, decision table, dry-run output, field sample, or report mock |
+
+The agent uses the lowest fidelity that can settle the decision. A flow or wireframe comes before a high-fidelity prototype unless visual, responsive, or complex interaction details require more. Record the result as `APPROVED`, `CHANGES_REQUESTED`, `REVIEW_REQUIRED`, or `NOT_REQUIRED`. Prototype approval confirms intended direction; it does not prove implementation or deployment.
 
 ## Core rules
 
@@ -63,6 +81,7 @@ Each cycle advances one active slice. Finishing a slice does not mean the projec
 - Give the active slice an expected outcome or value signal, an acceptance owner, and a next checkpoint when it affects progress. Do not invent a KPI to fill a template.
 - Track only material risks that can affect the current delivery, with their impact, response, owner, and trigger. Do not create a separate risk register by default.
 - Give every project a root `AGENTS.md`. Add a scoped file when a directory has its own stack, application boundary, data boundary, validation commands, or release process.
+- The agent may recommend and implement, but it may not approve its own material product decision. Do not start expensive or hard-to-reverse work while a required review artifact remains unapproved.
 - Keep intended product behavior separate from implementation facts. Contracts define the target; code, Git, tests, and runtime results show the current implementation.
 - When approved scope or approach changes, record the reason and its effect on delivery, cost, or acceptance. Put reusable lessons into the relevant rule, contract, or automated check.
 - Reuse the repository's existing structure, dependencies, components, services, and documents before adding another abstraction or a parallel fact source.
@@ -175,10 +194,11 @@ Preview the files that would be created:
 python3 scripts/init_project.py /path/to/project \
   --name "Project name" \
   --mode greenfield \
+  --profile delivery \
   --dry-run
 ```
 
-Add `--scoped path/to/directory` only when the directory has a real local engineering boundary. The initializer creates missing files and leaves existing files unchanged.
+Use `--profile core` for only README, PLAN, and root AGENTS; `delivery` adds specifications, traceability, and test evidence; `release` adds release and architecture-decision material. Add `--prototype` when the project needs a separate human review record. Add `--scoped path/to/directory` only when the directory has a real local engineering boundary. The initializer creates missing files and leaves existing files unchanged.
 
 Audit the initialized layout:
 
@@ -192,7 +212,7 @@ Before handoff, run the strict audit:
 python3 scripts/audit_project.py /path/to/project --strict
 ```
 
-Initialization creates a file skeleton, not finished project documentation. Strict mode catches structural gaps, obvious unfinished starter content, and key empty tables. It does not replace product review, code tests, or runtime verification.
+Initialization creates a file skeleton, not finished project documentation. Strict mode checks structure, status values, human review gates, and basic consistency between requirements, traceability, and test evidence. It does not replace product review, code tests, or runtime verification.
 
 ## Readiness and boundaries
 

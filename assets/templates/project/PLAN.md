@@ -4,6 +4,7 @@
 
 - Project: {{PROJECT_NAME}}
 - Mode: `{{MODE}}`
+- Governance profile: `{{PROFILE}}`
 - Phase: discovery
 - Readiness: not assessed
 - Active task: establish the verified project baseline
@@ -53,6 +54,13 @@ Describe the next implementation slice and its dependencies after the evidence r
 For each material risk or uncertainty, record the likely impact, response, owner, and the condition that triggers escalation, rollback, or a stop. If none applies to the current slice, state that plainly.
 
 | Risk or uncertainty | Likely impact | Response | Owner | Trigger or stop condition |
+|---|---|---|---|---|
+
+### Human decisions and review gates
+
+Record only decisions that need human confirmation before the next implementation step. Use a prototype, wireframe, transcript, API example, diagram, decision table, or dry run as appropriate. If no separate artifact is needed, record `NOT_REQUIRED` and the reason when omission could surprise the user.
+
+| Decision or artifact | Required? | Reviewer | Status | Evidence or next action |
 |---|---|---|---|---|
 
 ### Acceptance evidence

@@ -30,6 +30,8 @@ Always read:
 
 Read [lifecycle-workflow.md](references/lifecycle-workflow.md) when starting, recovering, or handing off a project.
 
+Read [human-review-and-prototyping.md](references/human-review-and-prototyping.md) when product intent, workflow, interaction, visual direction, or another material decision needs human confirmation before implementation.
+
 Read [work-area-discovery.md](references/work-area-discovery.md) when establishing or revisiting project scope. Then load only the rules needed for confirmed work areas or an open decision:
 
 - [website-rules.md](references/website-rules.md) for public, discoverable, content-led, or marketing sites;
@@ -64,6 +66,14 @@ Use the product material, repository evidence, and [work-area-discovery.md](refe
 Ask no more than three related questions at a time, and ask only when the answer changes product scope, architecture, data ownership, release responsibility, or acceptance evidence. Phrase questions in product terms instead of asking the user to choose from unexplained technologies.
 
 A work area is not a directory. Multiple areas may share one scoped `AGENTS.md`, and one area may span several directories. Create scoped rules only where a real local boundary exists.
+
+## Keep the human in control
+
+Treat the user as the product decision and acceptance owner unless another owner is named. The agent may analyze, recommend, draft, implement, and verify within its authority; it must not silently approve its own material product decisions.
+
+Choose the smallest confirmation artifact that lets the human judge an unresolved decision. For a website or interactive interface, this may be a flow, wireframe, visual screen, or clickable prototype. For a CLI, API, automation, data product, or backend workflow, prefer transcripts, examples, diagrams, decision tables, or dry-run output when they communicate the behavior better than a UI mock.
+
+Require human review before expensive or hard-to-reverse implementation when the artifact settles scope, navigation, visual direction, workflow, data responsibility, cost, or release risk. Record the artifact, reviewer, decision, requested changes, and evidence in `PLAN.md` or `docs/specs/prototype-review.md`. Keep prototype approval separate from implementation and release evidence.
 
 ## Route specialized capabilities
 
@@ -106,7 +116,13 @@ Every managed project must have:
 - `AGENTS.md`
 - `PLAN.md`
 
-Add `CHANGELOG.md` when the project needs a durable capability history. Add `docs/README.md`, `docs/DOC_ROUTER.md`, and `docs/DOCS_DICTIONARY.md` when documentation spans several files, audiences, or work areas. Accept an existing equivalent router instead of creating a duplicate. Keep the responsibilities covered when a small project combines them.
+Choose a governance profile before using the initializer:
+
+- `core`: `README.md`, root `AGENTS.md`, and `PLAN.md` for a small or already documented project;
+- `delivery`: add product, flow, traceability, testing, evidence, changelog, and documentation routing for normal implementation or spec handoff;
+- `release`: add the release runbook and ADR template when deployment, migration, recovery, or major architecture decisions apply.
+
+Add `docs/specs/prototype-review.md` only when a human confirmation artifact is useful. Accept existing equivalent files instead of creating duplicates. Keep the responsibilities covered when a small project combines them.
 
 Use the templates in `assets/templates/project/` only for missing files. Adapt their wording and documentation language to the project.
 
@@ -115,10 +131,11 @@ Use the initializer for `GREENFIELD`, or when a `BROWNFIELD` repository has expl
 ```bash
 python3 /path/to/spec-to-delivery/scripts/init_project.py /path/to/project \
   --name "Project name" \
-  --mode greenfield
+  --mode greenfield \
+  --profile delivery
 ```
 
-Add repeatable `--scoped path/to/directory` arguments only for directories with real local rule boundaries. The Python helpers manage governance files; they do not select or constrain the application's language or stack.
+Add `--prototype` when the project needs a dedicated human-review artifact. Add repeatable `--scoped path/to/directory` arguments only for directories with real local rule boundaries. The Python helpers manage governance files; they do not select or constrain the application's language or stack.
 
 The initializer does not overwrite existing files. Run it with `--dry-run` first. In a brownfield repository with equivalent canonical files, adapt individual templates instead of creating parallel documents.
 
@@ -129,24 +146,26 @@ After classification, replace template instructions with the confirmed work-area
 1. Extract actors or systems, problems, desired outcomes, observable value signals, scope, non-goals, domain rules, constraints, unknowns, and external dependencies. Do not invent a KPI when an observable outcome is enough.
 2. Assign stable requirement IDs to material behavior.
 3. Write the relevant behavior, flow, state, data, interface, API, permission, error, and visibility contracts at the depth the project needs.
-4. Map each requirement to its implementation and evidence in the traceability matrix.
-5. Record unresolved product decisions as `TODO / GAP` or `BLOCKED`; do not invent an answer.
-6. Split work into end-to-end slices that connect observable behavior with contracts, code, data, tests, and documentation.
-7. Put one active slice in `PLAN.md`. Keep later slices under next or later work.
+4. Produce a confirmation artifact when unresolved behavior, interaction, or visual direction would otherwise create material rework. Record human approval or requested changes before crossing the review gate.
+5. Map each requirement to its implementation and evidence in the traceability matrix.
+6. Record unresolved product decisions as `TODO / GAP` or `BLOCKED`; do not invent an answer.
+7. Split work into end-to-end slices that connect observable behavior with contracts, code, data, tests, and documentation.
+8. Put one active slice in `PLAN.md`. Keep later slices under next or later work.
 
 ## Implement one slice at a time
 
 For each slice:
 
 1. Confirm the goal, non-goal, expected outcome or value signal, acceptance owner, next checkpoint when one matters, evidence, material risks, acceptance criteria, and rollback or stop condition in `PLAN.md`.
-2. Read the nearest scoped `AGENTS.md` files and routed contracts.
-3. For a defect, collect failing evidence and find the first divergence before editing. Add a regression test or a safe substitute when practical.
-4. Make the smallest implementation that closes the behavior without weakening validation, permissions, transactions, idempotency, errors, accessibility, or evidence.
-5. Review the diff for scope, factual claims, error paths, security, and unrelated changes.
-6. Run fresh checks selected by risk and by the scoped rules.
-7. Update contracts, traceability, `PLAN.md`, and `CHANGELOG.md` to match the result actually verified. If approved scope or approach changed, record the reason and its effect on delivery, cost, or acceptance.
-8. When a result changes how later work should be done, update the nearest rule, contract, or automated check. Do not create a separate lessons log by default.
-9. Commit only the task-related files when the user has asked for a commit or the repository rules require one.
+2. Confirm that every required human review gate is `APPROVED`, `NOT_REQUIRED`, or explicitly waived with its rework risk recorded.
+3. Read the nearest scoped `AGENTS.md` files and routed contracts.
+4. For a defect, collect failing evidence and find the first divergence before editing. Add a regression test or a safe substitute when practical.
+5. Make the smallest implementation that closes the behavior without weakening validation, permissions, transactions, idempotency, errors, accessibility, or evidence.
+6. Review the diff for scope, factual claims, error paths, security, and unrelated changes.
+7. Run fresh checks selected by risk and by the scoped rules. For an approved prototype, compare the implemented artifact with it and record intentional differences.
+8. Update contracts, traceability, `PLAN.md`, and `CHANGELOG.md` to match the result actually verified. If approved scope or approach changed, record the reason and its effect on delivery, cost, or acceptance.
+9. When a result changes how later work should be done, update the nearest rule, contract, or automated check. Do not create a separate lessons log by default.
+10. Commit only the task-related files when the user has asked for a commit or the repository rules require one.
 
 ## Gate completion by evidence
 
